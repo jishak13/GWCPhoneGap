@@ -1,0 +1,128 @@
+body {
+    font-family: 			sans-serif;
+}
+
+/** HTML and Body CSS Style Changes
+- Height is 100 % of the Viewport Height
+**/
+
+html,body{
+    height: 				100vh;
+}
+
+[class*="col-"] {
+    float: 					left;
+    border-radius: 			5px;
+    padding: 				0%;
+}
+
+[class*="row-"] {
+    float: 					left;
+    display: 				block;
+    border-radius: 			5px;
+    padding: 				3%;
+    background: 	        linear-gradient(to bottom right, goldenrod, #FFDF00);
+    border : 				2px solid maroon;
+    margin-bottom: 			2px;
+    text-align:  		    left;
+}
+
+/** Elements with a ID = row CSS Style Changes
+- Add a 2 pixel left and right margin
+- Add a 1 pixel solid black border
+**/
+
+.row {
+
+    margin-left:  			2px;
+    margin-right: 			2px;
+    border: 				1px solid black;
+    
+}
+
+/** After any Elements with an ID = row CSS Style Changes
+- Clear any content after a row
+- Clear Both Left and right sides of a row
+- Make the row take the whole width of the view port ( block )
+- Add a 10 pixel margin to the bottom **/
+
+.row::after {
+    content: 				"";
+    clear: 					both;
+    display: 				block;
+    margin-bottom: 			10px;
+}
+
+/** Adding these classes to an element will change the color of the background**/
+    .lim {background-color: 		#00ff00;}
+    .yel {background-color: 		#ffff00;}
+    .cya {background-color: 		#00ffff;}
+    .mar {background-color: 		#800000;}
+    .gre {background-color: 		#008000;}
+    .oli {background-color: 		#808000;}
+    .tea {background-color: 		#008080;}
+    .grey{background-color: 		grey   ;}
+    .wht {background-color: 		#ffffff;}
+    .nvb {background-color: 		#0f1626;}
+    .lthr{background-color: 		#ab987a;}
+    .crl {background-color: 		#ff533d;}
+    .eshl{background-color: 		#f5f5f5;}
+    .fthr{background-color: 		#77c9d4;}
+    .mrn {background-color: 		#57bc90;}
+    .frst{background-color: 		#015249;}
+    .shl {background-color:  		#f8eee7;}
+    .elct{background-color:  		#3cc47c;}
+    .dgblue{background-color:       dodgerblue;}
+    .GWCGrey-background { background-color:     #2e3135;}
+    .GWCGreen-background{ background-color:     #4fa355;}
+    .white-background{ background-color:     white;}
+    .primary{background-color:          #a5d6a7;}
+    .pLight{background-color:          #d7ffd9;}
+    .pDark{background-color:          #75a478;}
+    .secondary{background-color:          #ff8a80;}
+    .sLight{background-color:          #ffbcaf;}
+    .sDark{background-color:          #c85a54;}
+/** Adding these classes to an element will change the color of the font**/
+.black-font {
+    color:          black;
+    opacity:        80;
+}
+.white-font {
+    
+    color:          white;
+
+}
+.GWCred-font {
+    color:          #d15036;
+}
+
+/*Styling Properties*/
+.margin-top {
+    margin-top:     10%;
+}
+.margin-left {
+    margin-left:    10%;
+}
+.margin-right {
+    margin-right:   10%;
+}
+.margin-bottom {
+    margin-right:   10%;
+}
+.center-text {
+    text-align:     center;
+}
+.blank {
+    border:         none;
+}
+
+#home {
+    background: white;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJkSURBVGhD7dpLiE1xAMfx6y1CGqIUjRJ2opFXsheKWNhZKMpjY2GjqMlmGiUbJCJsbGXBAikbIo+GlZJHVp55RB7f7+3+J925d+Z/pnvOnFv/X32699zHOed37jn/czozlZS4rMJTXMBUX2jH7MVP/K15hsVom0zCJbjyf3AMD2rTX7ANpc8CPIYr/QmbYCbiLMKvY7mxKGVc6Y9wRZ/AUvXZiR/wM7cxGyHjML2BySgkY3AU7kau4GUMtvAuvISffYM1MOvha/XcTXPPTNyAC/TA3oeYzMB1hO/tRyji9Ht4PBVSZDnCln2N1cgSf8luhF+yr/Z4FSYUy7XILjTb17NmIz7AeRVWxNHnHFyAW7IXrRh9HBgewfl+xmbkVqQTD+HM8zgfeP65iLCRbtWet7SIW8cD0BnnfYbeg/+vCFpSZDQO4zec6RVMQd5ZCQcQl/kWKzDsdOAanNkvHMAoFJVZuAmX78CyG5mzFC/gTN5hHUYiDiQ9CEP0eXgsRWUHvsMv3sUcjHS2wNHMdXLAmY+mmYDT8MM6Aa9/ypJFCCdNzzsOQAMyF/cQSnjxV8ZsR1hHd7cjcEDqT7jUCI9lL/IKDkA+P4j+nIEH0jy0QxHPLWtxBxswINPQLkUGTSpSUFKR2IzHsmFYiCzJvYjnIb+XlaNOlhRW5BvuR3iOUhfxnlZMvHOSiiAVGSqpSHUqPqlIbFKR6lR8UpHYpCLVqfikIrFJRapT8UlFYlPaIl+xNQPvlPs9b/A1er/eIfh5/9bS6P1mjiOqiHe6w53vMvNm4pDxf0hOldhJLEFKSv6pVP4B+UehTr7o/QwAAAAASUVORK5CYII=");
+    height:     4vh;
+}
+
+a:hover {
+    background-color:  blue;
+}
+
