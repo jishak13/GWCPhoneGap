@@ -1,6 +1,5 @@
 "use strict";
-
-var app = {
+let app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
@@ -16,10 +15,27 @@ var app = {
         // alert("Device is ready");
         if(navigator.onLine) {
             console.log("This CAT is Online!")
+            
             // console.log("The ID of the first object: " + todos.ID);
             // console.log("The Description of the first object: " + todos.Description);
             /** If this is online, the app should call the api to get the data */
             // $('#todoid').val("The ID of the first object: " + todos.ID);
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost/infosol/todos',
+                crossDomain: true,
+                dataType: 'json',
+                success: function (responseData, textStatus, jqXHR) {
+                   console.log("The response was send:");
+                   console.log(JSON.stringify(responseData));
+                   $('#txtresults').append(responseData)
+                },
+                error: function (responseData, textStatus, errorThrown) {
+                    console.log(responseData);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                }
+            });
           
         }else {
             console.log("This CAT is Offline!")
@@ -27,33 +43,11 @@ var app = {
             console.log("The Description of the first object: " + todos.Description);  
         }
 
-    },
+    }
 
 };
 
 app.initialize();
-
-$('#btn1').on('click',()=>{
-    let response = undefined;
-
-    $.ajax({
-        type: 'GET',
-        url: 'http://localhost:1337/hello',
-        crossDomain: true,
-        dataType: 'json',
-        success: function (responseData, textStatus, jqXHR) {
-           console.log(responseData);
-           response = responseData;
-        },
-        error: function (responseData, textStatus, errorThrown) {
-            console.log(responseData);
-            console.log(textStatus);
-            console.log(errorThrown);
-        }
-    });
-    //Selects the todoid element and appends the string of texts and values from the js/json/todos.js array
-    $('#todoid').append(JSON.stringify(response));
-});
 
 $('#btn2').on('click', ()=> {
     let newID = $('#txtid').val();
@@ -68,15 +62,34 @@ $('#btn2').on('click', ()=> {
 
     let newTodo = {ID: newID, Description: newDescription};
 
+    //To Post the new Todo
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:1337/sayhello',
+        url: 'http://localhost/infosol/todos',
         crossDomain: true,
         data: newTodo,
         dataType: 'json',
         success: function (responseData, textStatus, jqXHR) {
-           console.log("The response was send:");
+           console.log("The response was sent:");
            console.log(responseData);
+        },
+        error: function (responseData, textStatus, errorThrown) {
+            console.log(responseData);
+            console.log(textStatus);
+            console.log(errorThrown);
+        }
+    });
+    //To Update the Todo List on the web page
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost/infosol/todos',
+        crossDomain: true,
+        dataType: 'json',
+        success: function (responseData, textStatus, jqXHR) {
+           console.log("This Just In!");
+           console.log(JSON.stringify(responseData));
+           $('#main').empty();
+           $('#main').append(JSON.stringify(responseData));
         },
         error: function (responseData, textStatus, errorThrown) {
             console.log(responseData);
@@ -91,25 +104,24 @@ $('#btn2').on('click', ()=> {
 });
 
 function onDeviceReady() {
-    
-    
+
     // alert("Device is ready");
     if(navigator.onLine) {
         console.log("This CAT is Online!")
-        console.log(todos);
-        // console.log("The ID of the second object: " + todos[1].ID);
-        // console.log("The Description of the second object: " + todos[1].Description);
-
+        
+        // console.log("The ID of the first object: " + todos.ID);
+        // console.log("The Description of the first object: " + todos.Description);
         /** If this is online, the app should call the api to get the data */
-     
+        // $('#todoid').val("The ID of the first object: " + todos.ID);
         $.ajax({
             type: 'GET',
-            url: 'http://localhost:1337/hello',
+            url: 'http://localhost/infosol/todos',
             crossDomain: true,
             dataType: 'json',
             success: function (responseData, textStatus, jqXHR) {
-               console.log("The response was send:");
-               console.log(responseData);
+               console.log("This Just In!");
+               console.log(JSON.stringify(responseData));
+               $('#main').append(JSON.stringify(responseData));
             },
             error: function (responseData, textStatus, errorThrown) {
                 console.log(responseData);
@@ -117,13 +129,12 @@ function onDeviceReady() {
                 console.log(errorThrown);
             }
         });
-
-        
-
+      
     }else {
         console.log("This CAT is Offline!")
-        // console.log("The ID of the first object: " + todos[0].ID);
-        // console.log("The Description of the first object: " + todos[0].Description);  
+    
+        console.log("The Description of the first object: " + todos.Description);  
     }
 
 }
+
