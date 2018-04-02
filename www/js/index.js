@@ -60,7 +60,7 @@ $('#btn2').on('click', ()=> {
     console.log("description: " + newDescription);
 
 
-    let newTodo = {ID: newID, Description: newDescription};
+    let newTodo = { ID: newID, Description: newDescription };
 
     //To Post the new Todo
     $.ajax({
