@@ -1,4 +1,15 @@
 "use strict";
+var developers = {
+    frontEnd = {
+        'Mario': '',
+        'John': ''
+
+    },
+    backEnd = {
+        'Joe': '',
+        'JR': 'HERE'
+    }
+}
 let app = {
     // Application Constructor
     initialize: function() {
